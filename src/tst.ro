@@ -1,0 +1,10 @@
+require 'rubygems'
+require 'aws-sdk'
+
+s3 = AWS::S3.new()
+
+document = s3.buckets['bcktwo'].objects['helloaws.txt']
+
+File.open("local-file.txt", "w") do |f|
+  f.write(document.read)
+end
